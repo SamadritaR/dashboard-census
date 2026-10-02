@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='sales_weekly' site='acme' />
+  <preferences><preference name='owner.team' value='Sales' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Revenue' datatype='real' name='[Calculation_1004]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Sales])" />
+      </column>
+      <column caption='Active Customers' datatype='real' name='[Calculation_1005]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="COUNTD(IIF([Days Since Order] &lt;= 90, [Customer ID], NULL))" />
+      </column>
+      <column caption='Order Count' datatype='real' name='[Calculation_1006]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="COUNTD([Order ID])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Weekly Sales detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1004]' />
+          <column name='[Calculation_1005]' />
+          <column name='[Calculation_1006]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Weekly Sales'><zones><zone name='Weekly Sales detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

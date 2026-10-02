@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='region_review_2023' site='acme' />
+  <preferences><preference name='owner.team' value='Sales' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Revenue' datatype='real' name='[Calculation_1011]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Sales])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Region Review 2023 detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1011]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Region Review 2023'><zones><zone name='Region Review 2023 detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

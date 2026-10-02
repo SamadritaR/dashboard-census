@@ -1,0 +1,64 @@
+generated: '2026-10-02'
+definitions:
+- name: margin
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 209579840.6
+  candidates:
+  - formula: SUM([Profit]) / SUM([Sales])
+    aggregation: in the formula
+    teams:
+    - MariKoh
+    - jayutekar
+    - saurabhtayal
+    - smd-saif
+    - tableau
+    value: 0.1161
+  - formula: '[Profit]/[Sales]'
+    aggregation: SUM, Tableau default
+    teams:
+    - PrigasG
+    value: 2432.6642
+  - formula: '[Profit]/[Sales] * 100'
+    aggregation: SUM, Tableau default
+    teams:
+    - smd-saif
+    value: 243266.4153
+- name: days_to_ship
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 5619985.5
+  candidates:
+  - formula: DATEDIFF('day', [Order Date], [Ship Date])
+    aggregation: AVG, set on a sheet
+    teams:
+    - saurabhtayal
+    value: 3.9694
+  - formula: DATEDIFF('day', [Order Date], [Ship Date])
+    aggregation: SUM, set on a sheet
+    teams:
+    - ayushshinde19
+    - tableau
+    value: 203589.0
+  - formula: CASE [Ship Mode] WHEN "Same Day" THEN 0 WHEN "First Class" THEN 1 WHEN "Second Class" THEN 3 WHEN "Standard
+      Class" THEN 6 END
+    aggregation: SUM, set on a sheet
+    teams:
+    - tableau
+    value: 223082.0
+- name: order_count
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 292.1
+  candidates:
+  - formula: COUNTD([Order ID])
+    aggregation: in the formula
+    teams:
+    - MariKoh
+    - utkarsh-yadav1231
+    value: 25728.0
+  - formula: '{FIXED [Customer ID]:COUNTD([Order ID])}'
+    aggregation: SUM, Tableau default
+    teams:
+    - smd-saif
+    value: 100886.0

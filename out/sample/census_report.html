@@ -1,0 +1,43 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before you migrate: what this estate disagrees about</title><style>:root{--bg:#F5F4EF;--card:#fff;--ink:#17152E;--muted:#5D5A70;--line:#DEDBEA;--accent:#4A3FD0;--warn:#FBE7C2;--warnink:#6B4A0B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17152E;--card:#242145;--ink:#F5F4EF;--muted:#B8B4CC;--line:#3A3666;--accent:#B3ADFF;--warn:#4A3A14;--warnink:#F6D58E}}
+:root[data-theme="dark"]{--bg:#17152E;--card:#242145;--ink:#F5F4EF;--muted:#B8B4CC;--line:#3A3666;--accent:#B3ADFF;--warn:#4A3A14;--warnink:#F6D58E}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,Arial,sans-serif;max-width:1000px;padding:32px 20px 64px;margin:0 auto}
+h1{font:400 clamp(28px,5vw,44px)/1.1 Georgia,serif;margin:8px 0 4px} h2{font-size:20px;margin:40px 0 12px} h3{margin:0;font-size:20px}
+.sub{color:var(--muted)} .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px} .kpi b{display:block;font:400 32px Georgia,serif;color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+.cardhead{display:flex;flex-wrap:wrap;gap:10px;align-items:center} .rank{color:var(--accent);font-weight:700}
+.pill{background:var(--warn);color:var(--warnink);border-radius:99px;padding:3px 12px;font-size:14px}
+.scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;margin-top:12px;font-size:14.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top} th{color:var(--muted);font-weight:600}
+td.num{white-space:nowrap;font-weight:600} code{font-size:13px;word-break:break-word} .why{color:var(--muted);font-size:13px}
+.ask{margin:12px 0 0;color:var(--muted)} ul{padding-left:20px} .note{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:40px}</style></head><body>
+<p class=sub>Dashboard Census · prototype by Samadrita Roy Chowdhury</p>
+<h1>Before you migrate: what this estate disagrees about</h1><p class=sub>Synthetic estate: 6 workbooks with planted conflicts, priced on 6,000 invented order lines, with 90 day usage.</p>
+<div class=kpis>
+<div class=kpi><b>6</b>workbooks with calculated fields</div>
+<div class=kpi><b>12</b>calculated fields read</div>
+<div class=kpi><b>2</b>dashboards to retire</div>
+<div class=kpi><b>3</b>conflicts to decide</div>
+</div>
+<h2>Decision queue, ranked by gap × exposure</h2><section class=card><div class=cardhead><span class=rank>#1</span><h3>Active customers</h3>
+<span class=pill>2 readings · 118% apart · exposure 1,890</span></div>
+<div class=scroll><table><tr><th>Team</th><th>Formula</th><th>Value</th></tr><tr><td>Marketing</td><td><code>COUNTD(IIF([Days Since Order] &lt;= 30, [Customer ID], NULL))</code><div class=why>Aggregation: in the formula</div></td><td class=num>424</td></tr><tr><td>Sales</td><td><code>COUNTD(IIF([Days Since Order] &lt;= 90, [Customer ID], NULL))</code><div class=why>Aggregation: in the formula</div></td><td class=num>925</td></tr></table></div>
+<p class=ask>Decision needed: pick one reading, or keep both under different names. Owner: <b>unassigned</b></p></section><section class=card><div class=cardhead><span class=rank>#2</span><h3>Revenue</h3>
+<span class=pill>3 readings · 19% apart · exposure 2,395</span></div>
+<div class=scroll><table><tr><th>Team</th><th>Formula</th><th>Value</th></tr><tr><td>Finance</td><td><code>SUM([Sales] * (1 - [Discount]))</code><div class=why>Aggregation: in the formula</div></td><td class=num>$1,199,872</td></tr><tr><td>Operations</td><td><code>SUM(IIF([Returned] = &quot;Yes&quot;, 0, [Sales]))</code><div class=why>Aggregation: in the formula</div></td><td class=num>$1,320,209</td></tr><tr><td>Marketing, Sales</td><td><code>SUM([Sales])</code><div class=why>Aggregation: in the formula</div></td><td class=num>$1,429,504</td></tr></table></div>
+<p class=ask>Decision needed: pick one reading, or keep both under different names. Owner: <b>unassigned</b></p></section><section class=card><div class=cardhead><span class=rank>#3</span><h3>Margin</h3>
+<span class=pill>2 readings · 1.7% apart · exposure 1,050</span></div>
+<div class=scroll><table><tr><th>Team</th><th>Formula</th><th>Value</th></tr><tr><td>Marketing</td><td><code>AVG([Profit] / [Sales])</code><div class=why>Aggregation: in the formula</div></td><td class=num>13.3%</td></tr><tr><td>Finance</td><td><code>SUM([Profit]) / SUM([Sales])</code><div class=why>Aggregation: in the formula</div></td><td class=num>13.5%</td></tr></table></div>
+<p class=ask>Decision needed: pick one reading, or keep both under different names. Owner: <b>unassigned</b></p></section>
+<h2>Agreed, ready to seed the context layer</h2><ul><li><b>Order count</b> <code>COUNTD([Order ID])</code></li></ul>
+<h2>Retire instead of migrating (under 5 views in 90 days)</h2><ul><li>Exec KPIs (old)</li><li>Region Review 2023</li></ul>
+<h2>Metrics the rules could not place (0)</h2>
+<p class=sub>These go to the LLM fallback when an API key is set, or to a person. Field kinds found: metric 12.</p>
+<ul></ul>
+<p class=note>All data in this run is invented and the conflicts were planted to exercise the tool. For the run on real public workbooks, see the second report. Source: github.com/SamadritaR/dashboard-census</p>
+</body></html>

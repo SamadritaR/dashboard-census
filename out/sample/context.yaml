@@ -1,0 +1,59 @@
+generated: '2026-10-02'
+definitions:
+- name: order_count
+  status: agreed
+  formula: COUNTD([Order ID])
+  used_by:
+  - 'Finance: finance_board_pack.twb'
+  - 'Sales: sales_weekly.twb'
+- name: active_customers
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 118.2
+  candidates:
+  - formula: COUNTD(IIF([Days Since Order] <= 30, [Customer ID], NULL))
+    aggregation: in the formula
+    teams:
+    - Marketing
+    value: 424.0
+  - formula: COUNTD(IIF([Days Since Order] <= 90, [Customer ID], NULL))
+    aggregation: in the formula
+    teams:
+    - Sales
+    value: 925.0
+- name: revenue
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 19.1
+  candidates:
+  - formula: SUM([Sales] * (1 - [Discount]))
+    aggregation: in the formula
+    teams:
+    - Finance
+    value: 1199872.318
+  - formula: SUM(IIF([Returned] = "Yes", 0, [Sales]))
+    aggregation: in the formula
+    teams:
+    - Operations
+    value: 1320209.27
+  - formula: SUM([Sales])
+    aggregation: in the formula
+    teams:
+    - Marketing
+    - Sales
+    value: 1429504.5
+- name: margin
+  status: needs_decision
+  decision_owner: null
+  gap_pct: 1.7
+  candidates:
+  - formula: AVG([Profit] / [Sales])
+    aggregation: in the formula
+    teams:
+    - Marketing
+    value: 0.133
+  - formula: SUM([Profit]) / SUM([Sales])
+    aggregation: in the formula
+    teams:
+    - Finance
+    value: 0.1353

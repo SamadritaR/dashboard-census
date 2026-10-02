@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='ops_returns' site='acme' />
+  <preferences><preference name='owner.team' value='Operations' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Rev excl Returns' datatype='real' name='[Calculation_1010]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM(IIF([Returned] = &quot;Yes&quot;, 0, [Sales]))" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Returns Watch detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1010]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Returns Watch'><zones><zone name='Returns Watch detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='marketing_growth' site='acme' />
+  <preferences><preference name='owner.team' value='Marketing' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Total Revenue' datatype='real' name='[Calculation_1007]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Sales])" />
+      </column>
+      <column caption='Active Customers' datatype='real' name='[Calculation_1008]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="COUNTD(IIF([Days Since Order] &lt;= 30, [Customer ID], NULL))" />
+      </column>
+      <column caption='Margin %' datatype='real' name='[Calculation_1009]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="AVG([Profit] / [Sales])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Growth Overview detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1007]' />
+          <column name='[Calculation_1008]' />
+          <column name='[Calculation_1009]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Growth Overview'><zones><zone name='Growth Overview detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

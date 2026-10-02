@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='finance_board_pack' site='acme' />
+  <preferences><preference name='owner.team' value='Finance' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Net Revenue' datatype='real' name='[Calculation_1001]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Sales] * (1 - [Discount]))" />
+      </column>
+      <column caption='Profit Margin' datatype='real' name='[Calculation_1002]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Profit]) / SUM([Sales])" />
+      </column>
+      <column caption='Orders' datatype='real' name='[Calculation_1003]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="COUNTD([Order ID])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Board Pack detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1001]' />
+          <column name='[Calculation_1002]' />
+          <column name='[Calculation_1003]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Board Pack'><zones><zone name='Board Pack detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.2.0' version='18.1'>
+  <repository-location id='exec_kpis_old' site='acme' />
+  <preferences><preference name='owner.team' value='Strategy' /></preferences>
+  <datasources>
+    <datasource caption='Orders' name='federated.orders' inline='true'>
+      <column caption='Profit Ratio' datatype='real' name='[Calculation_1012]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula="SUM([Profit]) / SUM([Sales])" />
+      </column>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Exec KPIs (old) detail'>
+      <table><view>
+        <datasource-dependencies datasource='federated.orders'>
+          <column name='[Calculation_1012]' />
+        </datasource-dependencies>
+      </view></table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Exec KPIs (old)'><zones><zone name='Exec KPIs (old) detail' /></zones></dashboard>
+  </dashboards>
+</workbook>

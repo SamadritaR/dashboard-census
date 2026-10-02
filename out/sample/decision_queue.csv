@@ -1,0 +1,8 @@
+rank,intent,gap_pct,exposure,formula,aggregation,teams,value,not_priced
+1,active_customers,118.16037735849056,1890,"COUNTD(IIF([Days Since Order] <= 30, [Customer ID], NULL))",in the formula,Marketing,424.0,
+1,active_customers,118.16037735849056,1890,"COUNTD(IIF([Days Since Order] <= 90, [Customer ID], NULL))",in the formula,Sales,925.0,
+2,revenue,19.138051487241665,2395,SUM([Sales] * (1 - [Discount])),in the formula,Finance,1199872.318,
+2,revenue,19.138051487241665,2395,"SUM(IIF([Returned] = ""Yes"", 0, [Sales]))",in the formula,Operations,1320209.27,
+2,revenue,19.138051487241665,2395,SUM([Sales]),in the formula,Marketing; Sales,1429504.5,
+3,margin,1.7221338315097285,1050,AVG([Profit] / [Sales]),in the formula,Marketing,0.13300674639035528,
+3,margin,1.7221338315097285,1050,SUM([Profit]) / SUM([Sales]),in the formula,Finance,0.13529730056813394,

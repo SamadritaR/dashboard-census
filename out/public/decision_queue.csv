@@ -1,0 +1,9 @@
+rank,intent,gap_pct,exposure,formula,aggregation,teams,value,not_priced
+1,margin,209579840.63341713,20,SUM([Profit]) / SUM([Sales]),in the formula,MariKoh; jayutekar; saurabhtayal; smd-saif; tableau,0.11607332960995603,
+1,margin,209579840.63341713,20,[Profit]/[Sales],"SUM, Tableau default",PrigasG,2432.664152877764,
+1,margin,209579840.63341713,20,[Profit]/[Sales] * 100,"SUM, Tableau default",smd-saif,243266.41528777644,
+2,days_to_ship,5619985.456483405,12,"DATEDIFF('day', [Order Date], [Ship Date])","AVG, set on a sheet",saurabhtayal,3.96937024761162,
+2,days_to_ship,5619985.456483405,12,"DATEDIFF('day', [Order Date], [Ship Date])","SUM, set on a sheet",ayushshinde19; tableau,203589.0,
+2,days_to_ship,5619985.456483405,12,"CASE [Ship Mode] WHEN ""Same Day"" THEN 0 WHEN ""First Class"" THEN 1 WHEN ""Second Class"" THEN 3 WHEN ""Standard Class"" THEN 6 END","SUM, set on a sheet",tableau,223082.0,
+3,order_count,292.1253109452736,7,COUNTD([Order ID]),in the formula,MariKoh; utkarsh-yadav1231,25728.0,
+3,order_count,292.1253109452736,7,{FIXED [Customer ID]:COUNTD([Order ID])},"SUM, Tableau default",smd-saif,100886.0,
