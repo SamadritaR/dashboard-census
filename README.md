@@ -2,7 +2,7 @@
 
 Before a company moves its Tableau dashboards into an AI analytics platform, find out what those dashboards disagree about.
 
-**[Open the live dashboard →][(https://samadritar.github.io/dashboard-census/)*
+**[Open the live dashboard →](https://samadritar.github.io/dashboard-census/)**
 
 An interactive view of both runs: the ranked decision queue, why each metric disagrees, and a click to pick the agreed definition and see what the AI analyst's context gets.
 
