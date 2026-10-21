@@ -2,6 +2,10 @@
 
 Before a company moves its Tableau dashboards into an AI analytics platform, find out what those dashboards disagree about.
 
+**[Open the live dashboard →](https://samadritar.github.io/dashboard-census/)**
+
+An interactive view of both runs: the ranked decision queue, why each metric disagrees, and a click to pick the agreed definition and see what the AI analyst's context gets.
+
 Tableau keeps business logic inside each workbook, so every team quietly writes its own "margin." Migrate the estate as is and those conflicts land in the context layer all at once, after users are already getting answers. The census sorts them out first: it reads every calculated field, groups the ones that mean the same thing, prices how far apart they land on real rows, and ranks the decisions an owner has to make.
 
 Built as a proposal for [WisdomAI](https://wisdom.ai). It extends my [Greenroom deal capture](https://github.com/SamadritaR/greenroom-starter) case study, where the lesson was the same: disputes are born when terms are captured, so catch them there.
